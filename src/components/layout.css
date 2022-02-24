@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  font: 112.5%/1.45em georgia, serif, sans-serif;
+  font: 112.5%/1.45em 'Poppins', sans-serif;
   box-sizing: border-box;
   overflow-y: scroll;
 }
@@ -10,7 +12,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: hsla(0, 0%, 0%, 0.8);
-  font-family: georgia, serif;
+  font-family: 'Courier Prime', Courier, monospace;
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
@@ -25,7 +27,6 @@ details,
 figcaption,
 figure,
 footer,
-header,
 main,
 menu,
 nav,
@@ -36,6 +37,7 @@ summary {
 audio,
 canvas,
 progress,
+
 video {
   display: inline-block;
 }
@@ -51,11 +53,16 @@ template {
   display: none;
 }
 a {
+  color: hsla(0, 0%, 0%, 0.8);
+  text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
 }
-a:active,
+a:visited {
+  color: hsla(0, 0%, 0%, 0.8);
+}
 a:hover {
+  color: #734f96;
   outline-width: 0;
 }
 abbr[title] {
@@ -81,9 +88,8 @@ h1 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  font-weight: normal;
   text-rendering: optimizeLegibility;
   font-size: 2.25rem;
   line-height: 1.1;
@@ -119,6 +125,9 @@ img {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: 1.45rem;
+}
+svg {
+  color: #734f96;
 }
 svg:not(:root) {
   overflow: hidden;
@@ -397,7 +406,7 @@ p {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 1.45rem;
+  margin-bottom: 0.45rem;
 }
 pre {
   margin-left: 0;
