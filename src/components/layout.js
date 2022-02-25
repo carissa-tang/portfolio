@@ -8,10 +8,12 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import useViewport from "../hooks/useViewport"
 import "./layout.css"
 
-
 const Layout = ({ children }) => {
+  const { isDesktop } = useViewport()
+
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -27,24 +29,38 @@ const Layout = ({ children }) => {
       <div
         style={{
           margin: `2.5rem auto`,
-          maxWidth: 960,
           padding: `0 1.0875rem 1.45rem`,
+          position: "relative",
         }}
       >
         <main>{children}</main>
-        <footer
-          style={{
-            marginTop: `2rem`,
-            right: '2rem',
-            bottom: '1rem',
-            position: 'absolute',
-            fontSize: '0.8rem',
-          }}
-        >
-          © built on{" "}{site.buildTime}, with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
+        {isDesktop ? (
+          <footer
+            style={{
+              marginTop: `2rem`,
+              right: "2rem",
+              position: "absolute",
+              fontSize: "0.8rem",
+            }}
+          >
+            © built on {site.buildTime}, with
+            {` `}
+            <a href="https://www.gatsbyjs.com">Gatsby</a>
+          </footer>
+        ) : (
+          <footer
+            style={{
+              marginTop: `2rem`,
+              right: "1.5em",
+              position: "absolute",
+              fontSize: "0.5rem",
+            }}
+          >
+            © built on {site.buildTime}, with
+            {` `}
+            <a href="https://www.gatsbyjs.com">Gatsby</a>
+          </footer>
+        )}
       </div>
     </>
   )

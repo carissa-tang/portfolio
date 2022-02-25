@@ -16,5 +16,5 @@ exports.onInitialClientRender = () => {
     density: "high",
   }
 
-  let particleCanvas = new ParticleNetwork(canvasDiv, options)
+  //let particleCanvas = new ParticleNetwork(canvasDiv, options)
 }
