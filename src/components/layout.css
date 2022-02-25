@@ -142,10 +142,10 @@ img {
 svg {
   color: #734f96;
 }
-.css-i4bv87-MuiSvgIcon-root[data-testid="ArrowRightIcon"] {
+[data-testid="ArrowRightIcon"] {
   color: black;
 }
-.css-i4bv87-MuiSvgIcon-root[data-testid="ArrowDropDownIcon"] {
+[data-testid="ArrowDropDownIcon"] {
   color: black;
 }
 svg:not(:root) {
