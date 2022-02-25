@@ -78,7 +78,7 @@ export default function Profile({ fullSize }) {
         </>
       )}
       <br />
-      <p>
+      <p style={{ marginBottom: "5rem" }}>
         <a
           href="https://www.linkedin.com/in/carissatang/"
           target="_blank"

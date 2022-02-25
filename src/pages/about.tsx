@@ -16,10 +16,20 @@ import Profile from "../components/profile"
 import Grid from "@mui/material/Grid"
 
 const AboutPage = () => {
-  const [open, setOpen] = React.useState(false)
+  const [openPalette, setOpenPalette] = React.useState(false);
+  const [openCharity, setOpenCharity] = React.useState(false);
+  const [openTeaching, setOpenTeaching] = React.useState(false);
 
-  const handleClick = () => {
-    setOpen(!open)
+  const handlePaletteClick = () => {
+    setOpenPalette(!openPalette)
+  }
+
+  const handleCharityClick = () => {
+    setOpenCharity(!openCharity)
+  }
+
+  const handleTeachingClick = () => {
+    setOpenTeaching(!openTeaching)
   }
 
   return (
@@ -29,7 +39,7 @@ const AboutPage = () => {
         <Grid item xs={12} sm={4} pr={1}>
           <Profile fullSize={false} />
         </Grid>
-        <Grid item xs={12} sm={8} pl={1} pr={10}>
+        <Grid item xs={12} sm={8} pl={1} mt={4}>
           <h1>about me</h1>
           <p>
             Hi - I'm Carissa, a freshman studying Computer Science at the
@@ -44,8 +54,8 @@ const AboutPage = () => {
           </p>
           <h3 style={{ marginTop: "4rem" }}>more</h3>
           <List>
-            <ListItemButton onClick={handleClick}>
-              {open ? <ArrowDropDownIcon /> : <ArrowRightIcon />}
+            <ListItemButton onClick={handlePaletteClick}>
+              {openPalette ? <ArrowDropDownIcon /> : <ArrowRightIcon />}
               <ListItemIcon sx={{ pl: 2 }}>
                 <PaletteIcon />
               </ListItemIcon>
@@ -57,7 +67,7 @@ const AboutPage = () => {
                 primary="creative arts"
               />
             </ListItemButton>
-            <Collapse in={open} timeout="auto" unmountOnExit>
+            <Collapse in={openPalette} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
                 <ListItemButton sx={{ pl: 8 }}>
                   <ListItemText
@@ -76,8 +86,8 @@ const AboutPage = () => {
             </Collapse>
           </List>
           <List>
-            <ListItemButton onClick={handleClick}>
-              {open ? <ArrowDropDownIcon /> : <ArrowRightIcon />}
+            <ListItemButton onClick={handleCharityClick}>
+              {openCharity ? <ArrowDropDownIcon /> : <ArrowRightIcon />}
               <ListItemIcon sx={{ pl: 2 }}>
                 <VolunteerActivismIcon />
               </ListItemIcon>
@@ -89,7 +99,7 @@ const AboutPage = () => {
                 primary="social initiatives"
               />
             </ListItemButton>
-            <Collapse in={open} timeout="auto" unmountOnExit>
+            <Collapse in={openCharity} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
                 <ListItemButton sx={{ pl: 8 }}>
                   <ListItemText
@@ -104,8 +114,8 @@ const AboutPage = () => {
             </Collapse>
           </List>
           <List>
-            <ListItemButton onClick={handleClick}>
-              {open ? <ArrowDropDownIcon /> : <ArrowRightIcon />}
+            <ListItemButton onClick={handleTeachingClick}>
+              {openTeaching ? <ArrowDropDownIcon /> : <ArrowRightIcon />}
               <ListItemIcon sx={{ pl: 2 }}>
                 <SchoolIcon />
               </ListItemIcon>
@@ -117,7 +127,7 @@ const AboutPage = () => {
                 primary="teaching"
               />
             </ListItemButton>
-            <Collapse in={open} timeout="auto" unmountOnExit>
+            <Collapse in={openTeaching} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
                 <ListItemButton sx={{ pl: 8 }}>
                   <ListItemText
@@ -125,7 +135,7 @@ const AboutPage = () => {
                       fontFamily: "Courier New",
                       fontSize: "0.8rem",
                     }}
-                    primary="As an avid learner, I strive to share my knowledge with others. From working in youth summer camps and community programs to privately tutoring children in mathematics and languages, I love seeing my students grow. Teaching has taught me to be patient, attentive, and a leader — skills which have enabled me to become a leader to my own peers."
+                    primary="As an avid learner, I strive to share my knowledge with others. From working in summer camps and community programs to privately tutoring, I love seeing my students grow. Teaching has taught me to be patient, attentive, and a leader — skills which have enabled me to become a leader to my own peers."
                   />
                 </ListItemButton>
               </List>
