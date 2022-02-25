@@ -1,4 +1,5 @@
 import * as React from "react"
+import { useState } from "react"
 import List from "@mui/material/List"
 import ListItemButton from "@mui/material/ListItemButton"
 import ListItemIcon from "@mui/material/ListItemIcon"
@@ -16,9 +17,9 @@ import Profile from "../components/profile"
 import Grid from "@mui/material/Grid"
 
 const AboutPage = () => {
-  const [openPalette, setOpenPalette] = React.useState(false);
-  const [openCharity, setOpenCharity] = React.useState(false);
-  const [openTeaching, setOpenTeaching] = React.useState(false);
+  const [openPalette, setOpenPalette] = useState(false);
+  const [openCharity, setOpenCharity] = useState(false);
+  const [openTeaching, setOpenTeaching] = useState(false);
 
   const handlePaletteClick = () => {
     setOpenPalette(!openPalette)
