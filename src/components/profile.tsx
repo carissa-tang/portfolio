@@ -5,14 +5,15 @@ import { faLocationDot, faEnvelope } from "@fortawesome/free-solid-svg-icons"
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons"
 import { StaticImage } from "gatsby-plugin-image"
 import { Box } from "@mui/system"
-import useViewport from "../hooks/useViewport"
+import useViewport from "../utils/useViewport"
+import TypeAnimation from "react-type-animation"
 
 export default function Profile({ fullSize }) {
   const { isDesktop } = useViewport()
 
   return (
     <Box
-      sx={{ display: "flex", alignItems: "center", flexDirection: "column"}}
+      sx={{ display: "flex", alignItems: "center", flexDirection: "column" }}
     >
       {!isDesktop || !fullSize ? (
         <>
@@ -28,8 +29,10 @@ export default function Profile({ fullSize }) {
           <h1 className="smallSize" style={{ textAlign: "center" }}>
             <Link to="/">Carissa Tang</Link>
           </h1>
-          <p className="smallSize" style={{ textAlign: "center" }}>CS @ University of Waterloo</p>
-          <p className="smallSize" >
+          <p className="smallSize" style={{ textAlign: "center" }}>
+            CS 👩🏻‍💻 @ UWaterloo
+          </p>
+          <p className="smallSize">
             <FontAwesomeIcon icon={faLocationDot} /> Toronto, ON
           </p>
           <p
@@ -62,10 +65,24 @@ export default function Profile({ fullSize }) {
           <h1 style={{ textAlign: "center" }}>
             <Link to="/">Carissa Tang</Link>
           </h1>
-          <p style={{ textAlign: "center" }}>CS @ University of Waterloo</p>
+          <TypeAnimation
+            cursor={true}
+            style={{ textAlign: "center" }}
+            sequence={[
+              "CS 💻 @ UWaterloo",
+              4000,
+              "adventure-lover 🗺",
+              4000,
+              "foodie 😋",
+              5000,
+            ]}
+            repeat={Infinity}
+            wrapper="p"
+          />
           <p>
             <FontAwesomeIcon icon={faLocationDot} /> Toronto, ON
           </p>
+
           <p style={{ fontFamily: "Poppins", marginTop: "10rem" }}>
             <Link to="/about">about</Link>
             {" | "}
