@@ -8,7 +8,7 @@ import { Box } from "@mui/system"
 import useViewport from "../utils/useViewport"
 import TypeAnimation from "react-type-animation"
 
-export default function Profile({ fullSize }) {
+export default function Profile({ fullSize }: { fullSize: boolean }) {
   const { isDesktop } = useViewport()
 
   return (
@@ -48,7 +48,13 @@ export default function Profile({ fullSize }) {
             <Link to="/about">about</Link>
             <Link to="/projects">projects</Link>
             <Link to="/blog">blog</Link>
-            <Link to="/">resume</Link>
+            <Link
+              to="https://drive.google.com/file/d/14j8sVPk39-zdoUWR94PCJcitrXqmv-ar/view?usp=sharing"
+              target="_blank"
+              rel="noreferrer"
+            >
+              resume
+            </Link>
           </p>
         </>
       ) : (
@@ -71,6 +77,8 @@ export default function Profile({ fullSize }) {
             sequence={[
               "CS 💻 @ UWaterloo",
               4000,
+              "SWE Intern @ Coinbase",
+              4000,
               "adventure-lover 🗺",
               4000,
               "foodie 😋",
@@ -90,7 +98,13 @@ export default function Profile({ fullSize }) {
             {" | "}
             <Link to="/blog">blog</Link>
             {" | "}
-            <Link to="/">resume</Link>
+            <Link
+              to="https://drive.google.com/file/d/14j8sVPk39-zdoUWR94PCJcitrXqmv-ar/view?usp=sharing"
+              target="_blank"
+              rel="noreferrer"
+            >
+              resume
+            </Link>
           </p>
         </>
       )}

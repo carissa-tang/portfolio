@@ -43,7 +43,7 @@ const Layout = ({ children }) => {
               fontSize: "0.8rem",
             }}
           >
-            © built on {site.buildTime}, with
+            © updated on {site.buildTime}, with
             {` `}
             <a href="https://www.gatsbyjs.com">Gatsby</a>
           </footer>
@@ -56,7 +56,7 @@ const Layout = ({ children }) => {
               fontSize: "0.5rem",
             }}
           >
-            © built on {site.buildTime}, with
+            © updated on {site.buildTime}, with
             {` `}
             <a href="https://www.gatsbyjs.com">Gatsby</a>
           </footer>

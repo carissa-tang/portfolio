@@ -28,7 +28,7 @@ const AboutPage = () => {
 
   React.useEffect(() => {
     setChecked(true)
-  })
+  }, [])
 
   const CustomTab = styled(TabUnstyled)`
     font-family: Poppins, sans-serif;
@@ -95,7 +95,7 @@ const AboutPage = () => {
           container={containerRef.current}
           {...(checked ? { timeout: 800 } : {})}
         >
-          <Grid item xs={12} sm={8} pl={1} mt={4}>
+          <Grid item xs={12} sm={8} pl={1} mt={4} pr={[0, 5]}>
             <div style={{ display: "flex", alignItems: "flex-start" }}>
               <h1>about me </h1>
               <p
@@ -160,7 +160,7 @@ const AboutPage = () => {
                 years, and love having spontaneous guitar jam sessions.
               </TabPanel>
               <TabPanel value={1}>
-                In Oct 2020, I co-founded an Indigenous non-profit organization
+                In Oct 2020, I co-founded a non-profit Indigenous organization
                 called Project Bawaajigan that aims to educate the public and
                 empower the native community. Leading weekly meetings and
                 overseeing all operations has helped me develop my leadership,
