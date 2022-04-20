@@ -37,6 +37,7 @@ const BlogPage = () => {
         >
           <Grid item xs={12} sm={8} pl={1} mt={4} pr={[0, 5]}>
             <h1>blog</h1>
+            <p>coming soon...</p>
           </Grid>
         </Slide>
       </Grid>
