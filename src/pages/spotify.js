@@ -3,7 +3,7 @@ import * as React from "react"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Profile from "../components/profile"
-import { Button, Grid, TextField } from "@mui/material"
+import { Button, Grid } from "@mui/material"
 import useViewport from "../utils/useViewport"
 import Slide from "@mui/material/Slide"
 import axios from "axios"
@@ -14,8 +14,11 @@ const BlogPage = () => {
   const containerRef = React.useRef(null)
   const direction = isDesktop ? "up" : "right"
   const [token, setToken] = React.useState("")
-  const [searchKey, setSearchKey] = React.useState("")
   const [searchResults, setSearchResults] = React.useState([])
+  const REACT_APP_CLIENT_ID = "9c8e351f062b4e2b8c71586581253882"
+  const REACT_APP_REDIRECT_URI = "http://localhost:8000/spotify"
+  const REACT_APP_AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
+  const REACT_APP_RESPONSE_TYPE = "token"
 
   React.useEffect(() => {
     const hash = window.location.hash
@@ -42,23 +45,26 @@ const BlogPage = () => {
   }
 
   const searchArtists = async e => {
-    const { data } = await axios.get("https://api.spotify.com/v1/search", {
+    const { data } = await axios.get("https://api.spotify.com/v1/me/top/tracks", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
       params: {
-        q: searchKey,
-        type: "artist",
+        time_range: "medium_term",
+        limit: 10,
+        offset: 0,
       },
     })
 
     console.log("Data")
     console.log(data)
-    setSearchResults(data.artists.items)
+    setSearchResults(data.items)
   }
 
   const renderArtists = () => {
-    return searchResults.map(result => <div key={result.id}>{result.name}</div>)
+    return <ul>
+        {searchResults.map(result => <li key={result.id}><a href={result.external_urls.spotify} target="_blank">{result.name}</a></li>)}
+    </ul>
   }
 
   return (
@@ -83,15 +89,13 @@ const BlogPage = () => {
             <h1>spotify</h1>
             {!token ? (
               <a
-                href={`${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}`}
-              >
-                Login to spotify
+              href={`${REACT_APP_AUTH_ENDPOINT}?client_id=${REACT_APP_CLIENT_ID}&redirect_uri=${REACT_APP_REDIRECT_URI}&response_type=${REACT_APP_RESPONSE_TYPE}&scope=user-top-read`}
+            >Login to spotify
               </a>
             ) : (
               <>
                 <form onSubmit={searchArtists}>
-                  <TextField onChange={e => setSearchKey(e.target.value)} />
-                  <Button type="submit">Search</Button>
+                  <Button type="submit">Get top songs!</Button>
                 </form>
                 <Button onClick={logout}>Logout</Button>
               </>

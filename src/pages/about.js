@@ -5,6 +5,7 @@ import SchoolIcon from "@mui/icons-material/School"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Profile from "../components/profile"
+import { Link } from "gatsby"
 import { styled } from "@mui/system"
 import { Grid } from "@mui/material"
 import {
@@ -74,7 +75,7 @@ const AboutPage = () => {
     min-width: 320px;
     background-color: ${yellow[500]};
     border-radius: 8px;
-    margin-top: 4rem;
+    margin-top: 2rem;
     margin-bottom: 16px;
     display: flex;
     align-items: center;
@@ -123,6 +124,9 @@ const AboutPage = () => {
               also love to <strong>learn</strong>. When I am not falling down
               random rabbit holes, you can find me reading about recent tech
               advancements or picking up a new coding language.
+              <br />
+              <br />
+              Check out my <Link to="/spotify"><u>top played songs on Spotify</u></Link>
             </p>
             <TabsUnstyled style={{ width: "90%" }} defaultValue={0}>
               {isDesktop ? (
