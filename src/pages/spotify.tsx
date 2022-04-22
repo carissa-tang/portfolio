@@ -3,10 +3,40 @@ import * as React from "react"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Profile from "../components/profile"
-import { Button, Grid } from "@mui/material"
+import { Box, Button, Grid } from "@mui/material"
 import useViewport from "../utils/useViewport"
 import Slide from "@mui/material/Slide"
 import axios from "axios"
+import { rainbow } from "../utils/colors"
+
+type ArtistObject = {
+  external_urls: Object;
+  href: string;
+  id: string;
+  name: string;
+  type: string;
+  uri: string;
+}
+
+type TrackObject = {
+  album: Object;
+  artists: Array<ArtistObject>;
+  available_markets: Array<string>;
+  disc_number: number;
+  duration_ms: number;
+  explicit: boolean;
+  external_ids: Object;
+  external_urls: {spotify: string};
+  href: string;
+  id: string;
+  is_local: boolean;
+  name: string;
+  popularity: number;
+  preview_url: string;
+  track_number: number;
+  type: string;
+  uri: string;
+}
 
 const BlogPage = () => {
   const { isDesktop } = useViewport()
@@ -14,7 +44,7 @@ const BlogPage = () => {
   const containerRef = React.useRef(null)
   const direction = isDesktop ? "up" : "right"
   const [token, setToken] = React.useState("")
-  const [searchResults, setSearchResults] = React.useState([])
+  const [searchResults, setSearchResults] = React.useState<TrackObject[]>([])
   const REACT_APP_CLIENT_ID = "9c8e351f062b4e2b8c71586581253882"
   const REACT_APP_REDIRECT_URI = "http://localhost:8000/spotify"
   const REACT_APP_AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
@@ -25,7 +55,7 @@ const BlogPage = () => {
     let currToken = window.localStorage.getItem("token")
 
     if (!currToken && hash) {
-      currToken = hash.substring(1).split("&").find(e => e.startsWith("access_token")).split("=")[1]
+      currToken = hash?.substring(1)?.split("&")?.find(e => e.startsWith("access_token"))?.split("=")[1] || ""
       window.location.hash = ""
       window.localStorage.setItem("token", currToken)
       console.log(currToken)
@@ -40,7 +70,7 @@ const BlogPage = () => {
     window.localStorage.removeItem("token")
   }
 
-  const searchArtists = async e => {
+  const searchSongs = async () => {
     const { data } = await axios.get(
       "https://api.spotify.com/v1/me/top/tracks",
       {
@@ -57,31 +87,96 @@ const BlogPage = () => {
 
     console.log("Data")
     console.log(data)
+    console.log("Type")
+    console.log(typeof data.items[0])
     setSearchResults(data.items)
   }
 
-  const getPopularityColor = (n) => {
-    if (n > 70) {
-      return "green"
-    } else if (n > 40) {
-      return "yellow"
-    } else {
-      return "red"
+  const getPopularityColor = (n: number) => {
+    if (n >= 80) {
+      return rainbow["green"]
+    } else if (n >= 60) {
+      return rainbow["indigo"]
+    } else if (n >= 40) {
+      return rainbow["red"]
+    } else if (n >= 0) {
+      return rainbow["yellow"]
     }
   }
 
   const TopSongs = () => {
     return (
-      <ul>
-        {searchResults.map(result => (
-          <li key={result.id}>
-            <a href={result.external_urls.spotify} target="_blank">
-              {result.name}
-            </a>
-            <span style={{ padding: "0.5rem", backgroundColor: `${getPopularityColor(result.popularity)}`, borderRadius: "5px", marginLeft: "1rem" }}>{result.popularity}</span>
-          </li>
-        ))}
-      </ul>
+      <>
+        <ol>
+          {searchResults.map(result => (
+            <li key={result.id}>
+              <a
+                href={result.external_urls.spotify}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <strong>{result.name}</strong>
+              </a>{" "}
+              by {result.artists.map(artist => artist.name).join(", ")}
+              <span
+                style={{
+                  padding: "0.25rem",
+                  backgroundColor: `${getPopularityColor(result.popularity)}`,
+                  borderRadius: "10px",
+                  marginLeft: "1rem",
+                  fontSize: "0.75rem",
+                }}
+              >
+                {result.popularity}
+              </span>
+            </li>
+          ))}
+        </ol>
+        <hr style={{ margin: "2rem 0 2rem 0" }} />
+        <p>
+          Popularity index:
+          <span
+            style={{
+              padding: "0.5rem",
+              backgroundColor: rainbow["green"],
+              borderRadius: "10px",
+              marginLeft: "1rem",
+            }}
+          >
+            {'>'}= 80
+          </span>
+          <span
+            style={{
+              padding: "0.5rem",
+              backgroundColor: rainbow["indigo"],
+              borderRadius: "10px",
+              marginLeft: "1rem",
+            }}
+          >
+            {'>'}= 60
+          </span>
+          <span
+            style={{
+              padding: "0.5rem",
+              backgroundColor: rainbow["red"],
+              borderRadius: "10px",
+              marginLeft: "1rem",
+            }}
+          >
+            {'>'}= 40
+          </span>
+          <span
+            style={{
+              padding: "0.5rem",
+              backgroundColor: rainbow["yellow"],
+              borderRadius: "10px",
+              marginLeft: "1rem",
+            }}
+          >
+            {'<'} 40
+          </span>
+        </p>
+      </>
     )
   }
 
@@ -112,12 +207,10 @@ const BlogPage = () => {
                 Login to spotify
               </a>
             ) : (
-              <>
-                <form onSubmit={searchArtists}>
-                  <Button type="submit">Get top songs!</Button>
-                </form>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '2rem' }}>
+                <Button type="submit" onClick={searchSongs}>Get top songs!</Button>
                 <Button onClick={logout}>Logout</Button>
-              </>
+              </Box>
             )}
             <TopSongs />
           </Grid>
