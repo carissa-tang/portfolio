@@ -58,9 +58,8 @@ const ProjectsPage = () => {
                   href="https://schedule.communityfridgekw.ca/"
                   target="_blank"
                   rel="noreferrer"
-                  style={{ fontStyle: "italic" }}
                 >
-                  <bold>UW Blueprint - Community Fridge KW (Apr 2022)</bold>
+                  <strong>UW Blueprint - Community Fridge KW (Apr 2022)</strong>
                 </a>{" "}
                 <br />
                 Community Fridge KW scheduling platform for food sharing and
@@ -71,9 +70,8 @@ const ProjectsPage = () => {
                   href="https://schedule.communityfridgekw.ca/"
                   target="_blank"
                   rel="noreferrer"
-                  style={{ fontStyle: "italic" }}
                 >
-                  Pose Classifier Game - Google CSSI (Aug 2021)
+                  <strong>Pose Classifier Game - Google CSSI (Aug 2021)</strong>
                 </a>{" "}
                 <br />
                 Live-multiplayer, pose classifier game where users race to
@@ -85,9 +83,8 @@ const ProjectsPage = () => {
                   href="https://www.carissatang.com/~/spring2021/cranial-check/index"
                   target="_blank"
                   rel="noreferrer"
-                  style={{ fontStyle: "italic" }}
                 >
-                  Symptom Checker Website (Aug 2021)
+                  <strong>Symptom Checker Website (Aug 2021)</strong>
                 </a>{" "}
                 <br />
                 Preliminary self-diagnosis tool with an authentication system
@@ -97,9 +94,8 @@ const ProjectsPage = () => {
                   href="https://app.qoom.io/~/projects/qoomschedulerSQUc/createevent"
                   target="_blank"
                   rel="noreferrer"
-                  style={{ fontStyle: "italic" }}
                 >
-                  Scheduling Web Application (Mar 2021)
+                  <strong>Scheduling Web Application (Mar 2021)</strong>
                 </a>{" "}
                 <br />
                 User-friendly tool to schedule events and invite guests to sign

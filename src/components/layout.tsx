@@ -11,7 +11,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import useViewport from "../utils/useViewport"
 import "./layout.css"
 
-const Layout = ({ children }) => {
+const Layout = ({ children }: { children: any }) => {
   const { isDesktop } = useViewport()
 
   const { site } = useStaticQuery(

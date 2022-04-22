@@ -25,17 +25,13 @@ const BlogPage = () => {
     let currToken = window.localStorage.getItem("token")
 
     if (!currToken && hash) {
-      currToken = hash
-        .substring(1)
-        .split("&")
-        .find(e => e.startsWith("access_token"))
-        .split("=")[1]
+      currToken = hash.substring(1).split("&").find(e => e.startsWith("access_token")).split("=")[1]
       window.location.hash = ""
       window.localStorage.setItem("token", currToken)
       console.log(currToken)
     }
 
-    setToken(currToken)
+    currToken && setToken(currToken)
     setChecked(true)
   }, [])
 
@@ -45,26 +41,48 @@ const BlogPage = () => {
   }
 
   const searchArtists = async e => {
-    const { data } = await axios.get("https://api.spotify.com/v1/me/top/tracks", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      params: {
-        time_range: "medium_term",
-        limit: 10,
-        offset: 0,
-      },
-    })
+    const { data } = await axios.get(
+      "https://api.spotify.com/v1/me/top/tracks",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          time_range: "medium_term",
+          limit: 10,
+          offset: 0,
+        },
+      }
+    )
 
     console.log("Data")
     console.log(data)
     setSearchResults(data.items)
   }
 
-  const renderArtists = () => {
-    return <ul>
-        {searchResults.map(result => <li key={result.id}><a href={result.external_urls.spotify} target="_blank">{result.name}</a></li>)}
-    </ul>
+  const getPopularityColor = (n) => {
+    if (n > 70) {
+      return "green"
+    } else if (n > 40) {
+      return "yellow"
+    } else {
+      return "red"
+    }
+  }
+
+  const TopSongs = () => {
+    return (
+      <ul>
+        {searchResults.map(result => (
+          <li key={result.id}>
+            <a href={result.external_urls.spotify} target="_blank">
+              {result.name}
+            </a>
+            <span style={{ padding: "0.5rem", backgroundColor: `${getPopularityColor(result.popularity)}`, borderRadius: "5px", marginLeft: "1rem" }}>{result.popularity}</span>
+          </li>
+        ))}
+      </ul>
+    )
   }
 
   return (
@@ -89,8 +107,9 @@ const BlogPage = () => {
             <h1>spotify</h1>
             {!token ? (
               <a
-              href={`${REACT_APP_AUTH_ENDPOINT}?client_id=${REACT_APP_CLIENT_ID}&redirect_uri=${REACT_APP_REDIRECT_URI}&response_type=${REACT_APP_RESPONSE_TYPE}&scope=user-top-read`}
-            >Login to spotify
+                href={`${REACT_APP_AUTH_ENDPOINT}?client_id=${REACT_APP_CLIENT_ID}&redirect_uri=${REACT_APP_REDIRECT_URI}&response_type=${REACT_APP_RESPONSE_TYPE}&scope=user-top-read`}
+              >
+                Login to spotify
               </a>
             ) : (
               <>
@@ -100,7 +119,7 @@ const BlogPage = () => {
                 <Button onClick={logout}>Logout</Button>
               </>
             )}
-            {renderArtists()}
+            <TopSongs />
           </Grid>
         </Slide>
       </Grid>

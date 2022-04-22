@@ -8,7 +8,7 @@ import { Box } from "@mui/system"
 import useViewport from "../utils/useViewport"
 import TypeAnimation from "react-type-animation"
 
-export default function Profile({ fullSize }) {
+export default function Profile({ fullSize }: { fullSize: boolean }) {
   const { isDesktop } = useViewport()
 
   return (
