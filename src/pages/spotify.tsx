@@ -196,36 +196,41 @@ const SpotifyPage = ({
 export default SpotifyPage
 
 export async function getServerData() {
-  try {
-    const { items } = await getTopTracks()
-    if (!items) {
-      throw new Error(`Response failed`)
-    }
-
-    const tracks: FilteredTrackObject[] = items
-      .slice(0, 10)
-      .map((track: TrackObject) => ({
-        id: track.id,
-        artist: track.artists.map(_artist => _artist.name).join(", "),
-        songURL: track.external_urls.spotify,
-        title: track.name,
-        popularity: track.popularity,
-      }))
-
-    return {
-      status: 200,
-      props: {
-        trackProp: tracks,
-      },
-      headers: {
-        "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=43200",
-      },
-    }
-  } catch (error) {
-    return {
-      status: 500,
-      headers: {},
-      props: {},
-    }
+  return {
+    props: {
+      trackProp: [],
+    },
   }
+  // try {
+  //   const { items } = await getTopTracks()
+  //   if (!items) {
+  //     throw new Error(`Response failed`)
+  //   }
+
+  //   const tracks: FilteredTrackObject[] = items
+  //     .slice(0, 10)
+  //     .map((track: TrackObject) => ({
+  //       id: track.id,
+  //       artist: track.artists.map(_artist => _artist.name).join(", "),
+  //       songURL: track.external_urls.spotify,
+  //       title: track.name,
+  //       popularity: track.popularity,
+  //     }))
+
+  //   return {
+  //     status: 200,
+  //     props: {
+  //       trackProp: tracks,
+  //     },
+  //     headers: {
+  //       "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=43200",
+  //     },
+  //   }
+  // } catch (error) {
+  //   return {
+  //     status: 500,
+  //     headers: {},
+  //     props: {},
+  //   }
+  // }
 }
