@@ -126,7 +126,10 @@ const AboutPage = () => {
               advancements or picking up a new coding language.
               <br />
               <br />
-              Check out my <Link to="/spotify"><u>top played songs on Spotify</u></Link>
+              Check out my{" "}
+              <Link to="/spotify">
+                <u>top played songs on Spotify</u>!
+              </Link>
             </p>
             <TabsUnstyled style={{ width: "90%" }} defaultValue={0}>
               {isDesktop ? (

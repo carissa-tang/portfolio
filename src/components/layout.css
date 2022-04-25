@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  font: 112.5%/1.2em 'Poppins', sans-serif;
+  font: 112.5%/1.2em "Poppins", sans-serif;
   box-sizing: border-box;
   overflow-y: scroll;
 }
@@ -12,7 +12,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: hsla(0, 0%, 0%, 0.8);
-  font-family: 'Courier Prime', Courier, monospace;
+  font-family: "Courier Prime", Courier, monospace;
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
@@ -87,7 +87,7 @@ h1 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: normal;
   text-rendering: optimizeLegibility;
   font-size: 2.25rem;
@@ -288,7 +288,7 @@ h2 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: normal;
   text-rendering: optimizeLegibility;
   font-size: 1.62671rem;
@@ -304,7 +304,7 @@ h3 {
   padding-top: 0;
   margin-bottom: 0;
   color: inherit;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: normal;
   text-rendering: optimizeLegibility;
   font-size: 1.38316rem;
@@ -320,7 +320,7 @@ h4 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: normal;
   text-rendering: optimizeLegibility;
   font-size: 1rem;
@@ -336,7 +336,7 @@ h5 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: normal;
   text-rendering: optimizeLegibility;
   font-size: 0.85028rem;
@@ -352,7 +352,7 @@ h6 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: normal;
   text-rendering: optimizeLegibility;
   font-size: 0.78405rem;
@@ -619,6 +619,7 @@ pre tt:after {
   }
 }
 
-.css-cvhtoe-MuiButtonBase-root-MuiListItemButton-root:active, .css-cvhtoe-MuiButtonBase-root-MuiListItemButton-root:hover {
+.css-cvhtoe-MuiButtonBase-root-MuiListItemButton-root:active,
+.css-cvhtoe-MuiButtonBase-root-MuiListItemButton-root:hover {
   background-color: rgba(0, 0, 0, 0);
 }

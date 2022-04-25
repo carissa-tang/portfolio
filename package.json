@@ -37,7 +37,12 @@
     "react-type-animation": "^1.1.2"
   },
   "devDependencies": {
-    "prettier": "^2.5.1",
+    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@typescript-eslint/parser": "^5.20.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-react": "^7.29.4",
+    "prettier": "2.6.2",
     "typescript": "^4.6.3"
   },
   "keywords": [
@@ -51,6 +56,7 @@
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "eslint": "eslint \"**/*.{js, jsx, json, md}\"",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "repository": {

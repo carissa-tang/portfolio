@@ -3,94 +3,69 @@ import * as React from "react"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Profile from "../components/profile"
-import { Box, Button, Grid } from "@mui/material"
+import { Grid } from "@mui/material"
 import useViewport from "../utils/useViewport"
 import Slide from "@mui/material/Slide"
-import axios from "axios"
 import { rainbow } from "../utils/colors"
+import { getTopTracks } from "../api/SpotifyAPIClient"
 
 type ArtistObject = {
-  external_urls: Object;
-  href: string;
-  id: string;
-  name: string;
-  type: string;
-  uri: string;
+  external_urls: Object
+  href: string
+  id: string
+  name: string
+  type: string
+  uri: string
 }
 
 type TrackObject = {
-  album: Object;
-  artists: Array<ArtistObject>;
-  available_markets: Array<string>;
-  disc_number: number;
-  duration_ms: number;
-  explicit: boolean;
-  external_ids: Object;
-  external_urls: {spotify: string};
-  href: string;
-  id: string;
-  is_local: boolean;
-  name: string;
-  popularity: number;
-  preview_url: string;
-  track_number: number;
-  type: string;
-  uri: string;
+  album: Object
+  artists: Array<ArtistObject>
+  available_markets: Array<string>
+  disc_number: number
+  duration_ms: number
+  explicit: boolean
+  external_ids: Object
+  external_urls: { spotify: string }
+  href: string
+  id: string
+  is_local: boolean
+  name: string
+  popularity: number
+  preview_url: string
+  track_number: number
+  type: string
+  uri: string
 }
 
-const BlogPage = () => {
+type FilteredTrackObject = {
+  id: string
+  artist: string
+  songURL: string
+  title: string
+  popularity: number
+}
+
+declare module "axios" {
+  export interface AxiosResponse<T = any> extends Promise<T> {}
+}
+
+const SpotifyPage = ({
+  _,
+  serverData,
+}: {
+  _: any
+  serverData: { trackProp: FilteredTrackObject[] }
+}) => {
+  const { trackProp } = serverData
   const { isDesktop } = useViewport()
   const [checked, setChecked] = React.useState(false)
   const containerRef = React.useRef(null)
   const direction = isDesktop ? "up" : "right"
-  const [token, setToken] = React.useState("")
-  const [searchResults, setSearchResults] = React.useState<TrackObject[]>([])
-  const REACT_APP_CLIENT_ID = "9c8e351f062b4e2b8c71586581253882"
-  const REACT_APP_REDIRECT_URI = "http://localhost:8000/spotify"
-  const REACT_APP_AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
-  const REACT_APP_RESPONSE_TYPE = "token"
 
   React.useEffect(() => {
-    const hash = window.location.hash
-    let currToken = window.localStorage.getItem("token")
-
-    if (!currToken && hash) {
-      currToken = hash?.substring(1)?.split("&")?.find(e => e.startsWith("access_token"))?.split("=")[1] || ""
-      window.location.hash = ""
-      window.localStorage.setItem("token", currToken)
-      console.log(currToken)
-    }
-
-    currToken && setToken(currToken)
     setChecked(true)
   }, [])
-
-  const logout = () => {
-    setToken("")
-    window.localStorage.removeItem("token")
-  }
-
-  const searchSongs = async () => {
-    const { data } = await axios.get(
-      "https://api.spotify.com/v1/me/top/tracks",
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        params: {
-          time_range: "medium_term",
-          limit: 10,
-          offset: 0,
-        },
-      }
-    )
-
-    console.log("Data")
-    console.log(data)
-    console.log("Type")
-    console.log(typeof data.items[0])
-    setSearchResults(data.items)
-  }
 
   const getPopularityColor = (n: number) => {
     if (n >= 80) {
@@ -104,36 +79,46 @@ const BlogPage = () => {
     }
   }
 
-  const TopSongs = () => {
+  const TopTracks = ({ tracks }: { tracks: FilteredTrackObject[] }) => {
     return (
       <>
         <ol>
-          {searchResults.map(result => (
-            <li key={result.id}>
-              <a
-                href={result.external_urls.spotify}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <strong>{result.name}</strong>
-              </a>{" "}
-              by {result.artists.map(artist => artist.name).join(", ")}
-              <span
+          {tracks.map((track: FilteredTrackObject) => (
+            <li key={track.id}>
+              <div
                 style={{
-                  padding: "0.25rem",
-                  backgroundColor: `${getPopularityColor(result.popularity)}`,
-                  borderRadius: "10px",
-                  marginLeft: "1rem",
-                  fontSize: "0.75rem",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  flexWrap: "wrap",
                 }}
               >
-                {result.popularity}
-              </span>
+                <div>
+                  <a href={track.songURL} target="_blank" rel="noreferrer">
+                    <strong>{track.title}</strong>
+                  </a>{" "}
+                </div>
+                <div>
+                  <i style={{ fontSize: "14px" }}>{track.artist}</i>
+                  <span
+                    style={{
+                      padding: "0.25rem",
+                      backgroundColor: `${getPopularityColor(
+                        track.popularity
+                      )}`,
+                      borderRadius: "10px",
+                      marginLeft: "1rem",
+                      fontSize: "0.75rem",
+                    }}
+                  >
+                    {track.popularity}
+                  </span>
+                </div>
+              </div>
             </li>
           ))}
         </ol>
         <hr style={{ margin: "2rem 0 2rem 0" }} />
-        <p>
+        <p style={{ fontSize: "14px", lineHeight: "2rem" }}>
           Popularity index:
           <span
             style={{
@@ -143,7 +128,7 @@ const BlogPage = () => {
               marginLeft: "1rem",
             }}
           >
-            {'>'}= 80
+            {">"}= 80
           </span>
           <span
             style={{
@@ -153,7 +138,7 @@ const BlogPage = () => {
               marginLeft: "1rem",
             }}
           >
-            {'>'}= 60
+            {">"}= 60
           </span>
           <span
             style={{
@@ -163,7 +148,7 @@ const BlogPage = () => {
               marginLeft: "1rem",
             }}
           >
-            {'>'}= 40
+            {">"}= 40
           </span>
           <span
             style={{
@@ -173,7 +158,7 @@ const BlogPage = () => {
               marginLeft: "1rem",
             }}
           >
-            {'<'} 40
+            {"<"} 40
           </span>
         </p>
       </>
@@ -200,19 +185,7 @@ const BlogPage = () => {
         >
           <Grid item xs={12} sm={8} pl={1} mt={4} pr={[0, 5]}>
             <h1>spotify</h1>
-            {!token ? (
-              <a
-                href={`${REACT_APP_AUTH_ENDPOINT}?client_id=${REACT_APP_CLIENT_ID}&redirect_uri=${REACT_APP_REDIRECT_URI}&response_type=${REACT_APP_RESPONSE_TYPE}&scope=user-top-read`}
-              >
-                Login to spotify
-              </a>
-            ) : (
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '2rem' }}>
-                <Button type="submit" onClick={searchSongs}>Get top songs!</Button>
-                <Button onClick={logout}>Logout</Button>
-              </Box>
-            )}
-            <TopSongs />
+            <TopTracks tracks={trackProp} />
           </Grid>
         </Slide>
       </Grid>
@@ -220,4 +193,39 @@ const BlogPage = () => {
   )
 }
 
-export default BlogPage
+export default SpotifyPage
+
+export async function getServerData() {
+  try {
+    const { items } = await getTopTracks()
+    if (!items) {
+      throw new Error(`Response failed`)
+    }
+
+    const tracks: FilteredTrackObject[] = items
+      .slice(0, 10)
+      .map((track: TrackObject) => ({
+        id: track.id,
+        artist: track.artists.map(_artist => _artist.name).join(", "),
+        songURL: track.external_urls.spotify,
+        title: track.name,
+        popularity: track.popularity,
+      }))
+
+    return {
+      status: 200,
+      props: {
+        trackProp: tracks,
+      },
+      headers: {
+        "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=43200",
+      },
+    }
+  } catch (error) {
+    return {
+      status: 500,
+      headers: {},
+      props: {},
+    }
+  }
+}

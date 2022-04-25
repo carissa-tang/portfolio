@@ -12,14 +12,14 @@ export const yellow = {
 }
 
 export const rainbow = {
-  "yellow": "#FBF8CC",
-  "orange": "#FDE4CF",
-  "red": "#FFCFD2",
-  "pink": "#F1C0E8",
-  "purple": "#CFBAF0",
-  "indigo": "#A3C4F3",
-  "darkblue": "#90DBF4",
-  "blue": "#8EECF5",
-  "turquoise": "#98F5E1",
-  "green": "#B9FBC0",
+  yellow: "#FBF8CC",
+  orange: "#FDE4CF",
+  red: "#FFCFD2",
+  pink: "#F1C0E8",
+  purple: "#CFBAF0",
+  indigo: "#A3C4F3",
+  darkblue: "#90DBF4",
+  blue: "#8EECF5",
+  turquoise: "#98F5E1",
+  green: "#B9FBC0",
 }
