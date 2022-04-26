@@ -187,8 +187,9 @@ const SpotifyPage = ({
           <Grid item xs={12} sm={8} pl={1} mt={4} pr={[0, 5]}>
             <h1>spotify</h1>
             <TopTracks tracks={trackProp} />
-            {`${process.env.GATSBY_CLIENT_ID}:${process.env.GATSBY_CLIENT_SECRET}`}
-            {process.env.GATSBY_REFRESH_TOKEN}
+            {`client id/secret: ${process.env.GATSBY_CLIENT_ID}:${process.env.GATSBY_CLIENT_SECRET}`}
+            <br /><br />
+            {`refresh token: ${process.env.GATSBY_REFRESH_TOKEN}`}
           </Grid>
         </Slide>
       </Grid>
