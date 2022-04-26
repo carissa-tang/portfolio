@@ -199,13 +199,13 @@ const SpotifyPage = ({
 export default SpotifyPage
 
 export async function getServerData() {
-  const { items } = await getTopTracks()
-  console.log("ITEMS")
-  console.log(items);
+  // const { items } = await getTopTracks()
+  // console.log("ITEMS")
+  // console.log(items);
 
   return {
     props: {
-      test: items,
+      // test: items,
       trackProp: [],
     },
   }
