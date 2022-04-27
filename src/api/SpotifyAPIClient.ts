@@ -3,7 +3,7 @@ import axios from "axios"
 const getAccessToken = async () => {
   const params = new URLSearchParams()
   params.append("grant_type", "refresh_token")
-  params.append("refresh_token", `${process.env.REFRESH_TOKEN}`)
+  params.append("refresh_token", "AQDK053MSaT0gdMJLtZPHVTpV4t26fsKVQBwq69Orph6ISil3d57l2h6IsVdkJWAAybHURONNjCxu5XnKuT5OXQqrYf6_y1PYoDD06IUIaNxbbt6IQ6SG6mudEhEkzGP2_A")
 
   const config = {
     headers: {
