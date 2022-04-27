@@ -187,9 +187,9 @@ const SpotifyPage = ({
           <Grid item xs={12} sm={8} pl={1} mt={4} pr={[0, 5]}>
             <h1>spotify</h1>
             <TopTracks tracks={trackProp} />
-            {`client id/secret: ${process.env.GATSBY_CLIENT_ID}:${process.env.GATSBY_CLIENT_SECRET}`}
+            {/* {`client id/secret: ${process.env.GATSBY_CLIENT_ID}:${process.env.GATSBY_CLIENT_SECRET}`}
             <br /><br />
-            {`refresh token: ${process.env.GATSBY_REFRESH_TOKEN}`}
+            {`refresh token: ${process.env.GATSBY_REFRESH_TOKEN}`} */}
           </Grid>
         </Slide>
       </Grid>
@@ -204,43 +204,43 @@ export async function getServerData() {
   // console.log("ITEMS")
   // console.log(items);
 
-  return {
-    props: {
-      // test: items,
-      trackProp: [],
-    },
-  }
-
-  // try {
-  //   const { items } = await getTopTracks()
-  //   if (!items) {
-  //     throw new Error(`Response failed`)
-  //   }
-
-  //   const tracks: FilteredTrackObject[] = items
-  //     .slice(0, 10)
-  //     .map((track: TrackObject) => ({
-  //       id: track.id,
-  //       artist: track.artists.map(_artist => _artist.name).join(", "),
-  //       songURL: track.external_urls.spotify,
-  //       title: track.name,
-  //       popularity: track.popularity,
-  //     }))
-
-  //   return {
-  //     status: 200,
-  //     props: {
-  //       trackProp: tracks,
-  //     },
-  //     headers: {
-  //       "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=43200",
-  //     },
-  //   }
-  // } catch (error) {
-  //   return {
-  //     status: 500,
-  //     headers: {},
-  //     props: {},
-  //   }
+  // return {
+  //   props: {
+  //     test: items,
+  //     trackProp: [],
+  //   },
   // }
+
+  try {
+    const { items } = await getTopTracks()
+    if (!items) {
+      throw new Error(`Response failed`)
+    }
+
+    const tracks: FilteredTrackObject[] = items
+      .slice(0, 10)
+      .map((track: TrackObject) => ({
+        id: track.id,
+        artist: track.artists.map(_artist => _artist.name).join(", "),
+        songURL: track.external_urls.spotify,
+        title: track.name,
+        popularity: track.popularity,
+      }))
+
+    return {
+      status: 200,
+      props: {
+        trackProp: tracks,
+      },
+      headers: {
+        "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=43200",
+      },
+    }
+  } catch (error) {
+    return {
+      status: 500,
+      headers: {},
+      props: {},
+    }
+  }
 }
