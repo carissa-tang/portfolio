@@ -207,7 +207,7 @@ export async function getServerData() {
       .slice(0, 10)
       .map((track: TrackObject) => ({
         id: track.id,
-        artist: track.artists.map(_artist => _artist.name).join(", "),
+        artist: track.artists.map(_artist => _artist.name).join("&#xb7;"),
         songURL: track.external_urls.spotify,
         title: track.name,
         popularity: track.popularity,
