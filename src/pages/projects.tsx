@@ -52,18 +52,18 @@ const ProjectsPage = () => {
                 more on github
               </a>
             </div>
+            <p>
             <ul>
-              <li>
+            <li>
                 <a
-                  href="https://schedule.communityfridgekw.ca/"
+                  href="https://github.com/uwblueprint/jump-math"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <strong>UW Blueprint - Community Fridge KW (Apr 2022)</strong>
+                  <strong>UW Blueprint - JUMP Math (May 2022 - Present)</strong>
                 </a>{" "}
                 <br />
-                Community Fridge KW scheduling platform for food sharing and
-                redistribution
+                Digital math assessment tool for the 250,000+ students of non-profit organization JUMP Math
               </li>
               <li>
                 <a
@@ -71,7 +71,19 @@ const ProjectsPage = () => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <strong>Pose Classifier Game - Google CSSI (Aug 2021)</strong>
+                  <strong>UW Blueprint - Community Fridge KW (Jan 2022 - April 2022)</strong>
+                </a>{" "}
+                <br />
+                Community Fridge KW scheduling platform for food sharing and
+                redistribution
+              </li>
+              <li>
+                <a
+                  href="https://pose-classifier.glitch.me/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <strong>Google CSSI - Pose Classifier Game (Aug 2021)</strong>
                 </a>{" "}
                 <br />
                 Live-multiplayer, pose classifier game where users race to
@@ -80,11 +92,33 @@ const ProjectsPage = () => {
               </li>
               <li>
                 <a
+                  href="https://medilytics.carissatang1.repl.co/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <strong>Kode With Klossy - Health Informatics Dashboard (Jun 2021)</strong>
+                </a>{" "}
+                <br />
+                Dashboard for everyday health tips and visualizing aggregate public medical data
+              </li>
+              <li>
+                <a
+                  href="https://estee-lauder-challenge.carissatang1.repl.co/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <strong>Kode With Klossy x Estee Lauder Landing Page Challenge (Jun 2021)</strong>
+                </a>{" "}
+                <br />
+                Winner of landing page for Estée Lauder's Double Wear Makeup line, out of 300+ scholars
+              </li>
+              <li>
+                <a
                   href="https://www.carissatang.com/~/spring2021/cranial-check/index"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <strong>Symptom Checker Website (Aug 2021)</strong>
+                  <strong>Symptom Checker Website (Jan 2021 - August 2021)</strong>
                 </a>{" "}
                 <br />
                 Preliminary self-diagnosis tool with an authentication system
@@ -95,13 +129,14 @@ const ProjectsPage = () => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <strong>Scheduling Web Application (Mar 2021)</strong>
+                  <strong>Scheduling Web Application (Oct 2020 - Mar 2021)</strong>
                 </a>{" "}
                 <br />
                 User-friendly tool to schedule events and invite guests to sign
                 up at convenient times
               </li>
             </ul>
+            </p>
           </Grid>
         </Slide>
       </Grid>

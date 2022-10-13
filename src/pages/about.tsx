@@ -115,11 +115,11 @@ const AboutPage = () => {
               <span role="img" aria-label="wave">
                 👋
               </span>{" "}
-              - I'm Carissa. My favourite thing to do by far is to{" "}
-              <strong> create</strong>!
+              - I'm Carissa. I am currently pursuing my Bachelor's in Computer Science at the University of Waterloo. Through my previous internships, I have dabbled in a few industries in tech such as fintech @ Coinbase, biotech @ Cellular Longevity, Inc. and edTech @ Qoom.
               <br />
               <br />
-              From making music to building web applications, I love finding new
+              My favourite thing to do by far is to{" "}<strong> create</strong>!
+              From making music to building applications, I love finding new
               ways to integrate my creativity into projects I am working on. I
               also love to <strong>learn</strong>. When I am not falling down
               random rabbit holes, you can find me reading about recent tech
@@ -161,7 +161,7 @@ const AboutPage = () => {
                 </TabsList>
               )}
               <TabPanel value={0}>
-                Training in ballet the last 12 years of my life has taught me
+                Training in ballet for 12 years of my life has taught me
                 how to be perseverant, a good team member, and to be confident.
                 I have also picked up the piano, flute and violin over the
                 years, and love having spontaneous guitar jam sessions.

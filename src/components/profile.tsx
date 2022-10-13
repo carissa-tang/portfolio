@@ -18,13 +18,13 @@ export default function Profile({ fullSize }: { fullSize: boolean }) {
       {!isDesktop || !fullSize ? (
         <>
           <StaticImage
-            src="../images/headshot_2021.jpeg"
+            src="../images/dev_carissatang.jpg"
             width={100}
             imgStyle={{ borderRadius: "50%" }}
             quality={95}
             formats={["auto", "webp", "avif"]}
             alt="A Gatsby astronaut"
-            style={{ marginTop: "1.5rem", marginBottom: `1.45rem` }}
+            style={{ marginTop: "2rem", marginBottom: `1.45rem` }}
           />
           <h1 className="smallSize" style={{ textAlign: "center" }}>
             <Link to="/">Carissa Tang</Link>
@@ -49,7 +49,7 @@ export default function Profile({ fullSize }: { fullSize: boolean }) {
             <Link to="/projects">projects</Link>
             <Link to="/blog">blog</Link>
             <Link
-              to="https://drive.google.com/file/d/14j8sVPk39-zdoUWR94PCJcitrXqmv-ar/view?usp=sharing"
+              to="https://drive.google.com/file/d/1kwKrQYAMlPon1yy0syDmh1U70Gxc0C-c/view"
               target="_blank"
               rel="noreferrer"
             >
@@ -60,13 +60,13 @@ export default function Profile({ fullSize }: { fullSize: boolean }) {
       ) : (
         <>
           <StaticImage
-            src="../images/headshot_2021.jpeg"
+            src="../images/dev_carissatang.jpg"
             width={150}
             imgStyle={{ borderRadius: "50%" }}
             quality={95}
             formats={["auto", "webp", "avif"]}
             alt="A Gatsby astronaut"
-            style={{ marginBottom: `1.45rem` }}
+            style={{ marginTop: `1.45rem`, marginBottom: `1.45rem` }}
           />
           <h1 style={{ textAlign: "center" }}>
             <Link to="/">Carissa Tang</Link>
@@ -75,9 +75,9 @@ export default function Profile({ fullSize }: { fullSize: boolean }) {
             cursor={true}
             style={{ textAlign: "center" }}
             sequence={[
-              "CS 💻 @ UWaterloo",
+              "cs 💻 @ uwaterloo",
               4000,
-              "SWE Intern @ Coinbase",
+              "incoming swe intern @ linkedin",
               4000,
               "adventure-lover 🗺",
               4000,
