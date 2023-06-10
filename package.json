@@ -57,7 +57,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "eslint": "eslint \"**/*.{js, jsx, json, md}\"",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "deploy": "gatsby build && gh-pages -d public -b main"
   },
   "repository": {
     "type": "git",
